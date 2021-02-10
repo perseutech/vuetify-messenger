@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <v-app>
+    <v-main>
+      <v-row class="mt-5 pt-5" justify="center">
+        <v-col cols="auto">
+          <v-btn @click="showSuccessAlert">Show Success Alert</v-btn>
+        </v-col>
+        <v-col cols="auto">
+          <v-btn @click="showErrorAlert">Show Error Alert</v-btn>
+        </v-col>
+        <v-col cols="auto">
+          <v-btn @click="showConfirmAlert">Show Confirm Alert</v-btn>
+        </v-col>
+      </v-row>
+      <v-message></v-message>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld
+  components: {},
+  data: () => ({}),
+  methods: {
+    showSuccessAlert() {
+      this.$messenger.showSuccessAlert("Some thing");
+    },
+    showErrorAlert() {
+      this.$messenger.showErrorAlert("Some thing");
+    },
+    showConfirmAlert() {
+      this.$messenger.showConfirmAlert(
+        "Some thing",
+        () => {
+          console.log("Yes clicked");
+        },
+        () => {
+          console.log("No clicked");
+        }
+      );
+    }
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
