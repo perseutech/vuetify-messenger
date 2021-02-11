@@ -41,14 +41,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-snackbar
-      v-model="snackbar"
-      :color="snackbarColor"
-      multi-line
-      bottom
-      centered
-      absolute
-    >
+    <v-snackbar v-model="snackbar" :color="snackbarColor" multi-line app>
       {{ message }}
       <template v-slot:action="{ attrs }">
         <v-btn @click="closeSnackbar" color="accent" text v-bind="attrs">
