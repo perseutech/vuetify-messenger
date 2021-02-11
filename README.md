@@ -53,11 +53,15 @@ Use the `<v-messenger></v-messenger>` component in the page that you want use it
 this.$messenger.showSuccessAlert("Some message");
 ```
 
+![Success alert GIF](./assets/success-alert.gif)
+
 ### Error alert
 
 ```javascript
 this.$messenger.showErrorAlert("Some message");
 ```
+
+![Error alert GIF](./assets/error-alert.gif)
 
 ## Confirm usage
 
@@ -73,16 +77,22 @@ this.$messenger.showConfirmAlert(
 );
 ```
 
+![Confirm GIF](./assets/confirm.gif)
+
 ## Snackbar usage
 
-### Sucess alert
+### Sucess snackbar
 
 ```javascript
 this.$messenger.showSuccessSnackbar("Some message");
 ```
 
-### Error alert
+![Success snackbar GIF](./assets/success-snackbar.gif)
+
+### Error snackbar
 
 ```javascript
 this.$messenger.showErrorSnackbar("Some message");
 ```
+
+![Error snackbar GIF](./assets/error-snackbar.gif)

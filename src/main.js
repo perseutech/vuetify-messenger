@@ -6,16 +6,7 @@ import "@babel/polyfill";
 import messenger from "./../index";
 
 Vue.config.productionTip = false;
-Vue.use(messenger, {
-  texts: {
-    confirmTitle: "Confirmação",
-    successTitle: "Pronto",
-    errorTitle: "Ops",
-    closeText: "Fechar",
-    yesText: "Sim",
-    noText: "Não"
-  }
-});
+Vue.use(messenger);
 
 new Vue({
   store,
