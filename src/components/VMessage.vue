@@ -41,13 +41,13 @@
   </v-dialog>
 </template>
 <script>
-import { mapState, mapActions } from "vuex";
+import store from "./../store";
 
 export default {
   methods: {
-    ...mapActions({
-      close: "alert/closeAlert"
-    }),
+    close() {
+      store.dispatch("alert/closeAlert");
+    },
     async yesClick() {
       this.yes();
       this.close();
@@ -58,19 +58,17 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      show: state => state.alert.show,
-      title: state => state.alert.title,
-      message: state => state.alert.message,
-      isConfirm: state => state.alert.isConfirm,
-      yesText: state => state.alert.yesText,
-      noText: state => state.alert.noText,
-      closeText: state => state.alert.closeText,
-      yesLoading: state => state.alert.yesLoading,
-      noLoading: state => state.alert.noLoading,
-      yes: state => state.alert.yes,
-      no: state => state.alert.no
-    })
+    show: () => store.state.alert.show,
+    title: () => store.state.alert.title,
+    message: () => store.state.alert.message,
+    isConfirm: () => store.state.alert.isConfirm,
+    yesText: () => store.state.alert.yesText,
+    noText: () => store.state.alert.noText,
+    closeText: () => store.state.alert.closeText,
+    yesLoading: () => store.state.alert.yesLoading,
+    noLoading: () => store.state.alert.noLoading,
+    yes: () => store.state.alert.yes,
+    no: () => store.state.alert.no
   }
 };
 </script>
