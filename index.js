@@ -1,4 +1,4 @@
-import VMessage from "./src/components/VMessage";
+import VMessenger from "./src/components/VMessenger";
 import store from "./src/store";
 import options from "./src/options";
 
@@ -9,7 +9,7 @@ export default {
         options[key] = globalOptions[key];
       });
     }
-    Vue.component("v-message", VMessage);
+    Vue.component("v-messenger", VMessenger);
     Vue.prototype.$messenger = {
       showSuccessAlert: message => {
         store.dispatch("alert/showSuccessAlert", message);
@@ -32,6 +32,12 @@ export default {
             no: args[2]
           });
         }
+      },
+      showSuccessSnackbar: message => {
+        store.dispatch("alert/showSuccessSnackbar", message);
+      },
+      showErrorSnackbar: message => {
+        store.dispatch("alert/showErrorSnackbar", message);
       }
     };
   }

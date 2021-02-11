@@ -3,7 +3,9 @@ import options from "./../../options";
 export default {
   namespaced: true,
   state: {
-    show: false,
+    alert: false,
+    snackbar: false,
+    snackbarColor: "",
     isConfirm: false,
     title: "",
     message: "",
@@ -17,14 +19,14 @@ export default {
   },
   mutations: {
     SHOW_ALERT(state, payload) {
-      state.show = true;
+      state.alert = true;
       state.isConfirm = false;
       state.title = payload.title;
       state.message = payload.message;
       state.closeText = payload.closeText;
     },
     SHOW_CONFIRM(state, payload) {
-      state.show = true;
+      state.alert = true;
       state.isConfirm = true;
       state.title = payload.title;
       state.message = payload.message;
@@ -33,8 +35,15 @@ export default {
       state.yesText = payload.yesText;
       state.noText = payload.noText;
     },
+    SHOW_SNACKBAR(state, payload) {
+      state.snackbar = true;
+      state.title = payload.title;
+      state.message = payload.message;
+      state.closeText = payload.closeText;
+      state.snackbarColor = payload.snackbarColor;
+    },
     HIDE_ALERT(state) {
-      state.show = false;
+      state.alert = false;
       state.isConfirm = false;
       state.title = "";
       state.message = "";
@@ -44,6 +53,11 @@ export default {
       state.noText = "";
       state.yesLoading = false;
       state.noLoading = false;
+    },
+    HIDE_SNACKBAR(state) {
+      state.snackbar = false;
+      state.title = "";
+      state.message = "";
     },
     START_YES_LOADING(state) {
       state.yesLoading = true;
@@ -86,6 +100,22 @@ export default {
         no: payload.no
       });
     },
+    showSuccessSnackbar({ commit }, message) {
+      commit("SHOW_SNACKBAR", {
+        title: options.texts.successTitle,
+        message: message,
+        closeText: options.texts.closeText,
+        snackbarColor: "success"
+      });
+    },
+    showErrorSnackbar({ commit }, message) {
+      commit("SHOW_SNACKBAR", {
+        title: options.texts.successTitle,
+        message: message,
+        closeText: options.texts.closeText,
+        snackbarColor: "error"
+      });
+    },
     startYesLoading({ commit }) {
       commit("START_YES_LOADING");
     },
@@ -94,6 +124,9 @@ export default {
     },
     closeAlert({ commit }) {
       commit("HIDE_ALERT");
+    },
+    closeSnackbar({ commit }) {
+      commit("HIDE_SNACKBAR");
     }
   }
 };

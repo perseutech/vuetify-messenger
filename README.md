@@ -1,34 +1,88 @@
-# vuetify-message
+# vuetify-messenger
 
-## Project setup
-```
-yarn install
-```
+## Installing
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+```bash
+yarn add @perseu-vue/vuetify-messenger
 ```
 
-### Compiles and minifies for production
-```
-yarn build
+Or
+
+```bash
+npm install @perseu-vue/vuetify-messenger
 ```
 
-### Run your unit tests
-```
-yarn test:unit
+## Setup
+
+Register `vuetify-messenger` globally:
+
+```javascript
+import Vue from "vue";
+import VMessenger from "@perseu-vue/vuetify-messenger";
+
+Vue.use(VMessenger);
 ```
 
-### Run your end-to-end tests
-```
-yarn test:e2e
+### Changing default messages
+
+```javascript
+import Vue from "vue";
+import VMessenger from "@perseu-vue/vuetify-messenger";
+
+Vue.use(VMessenger, {
+  texts: {
+    confirmTitle: "Confirmação",
+    successTitle: "Pronto",
+    errorTitle: "Ops",
+    closeText: "Fechar",
+    yesText: "Sim",
+    noText: "Não"
+  }
+});
 ```
 
-### Lints and fixes files
-```
-yarn lint
+Use the `<v-messenger></v-messenger>` component in the page that you want use it
+
+> If you're ussing SPA, use it on the SPA's default page. like `App.vue` or `default.vue` (for Nuxt)
+
+## Alert usage
+
+### Sucess alert
+
+```javascript
+this.$messenger.showSuccessAlert("Some message");
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Error alert
+
+```javascript
+this.$messenger.showErrorAlert("Some message");
+```
+
+## Confirm usage
+
+```javascript
+this.$messenger.showConfirmAlert(
+  "Some message",
+  () => {
+    console.log("Yes clicked");
+  },
+  () => {
+    console.log("No clicked");
+  }
+);
+```
+
+## Snackbar usage
+
+### Sucess alert
+
+```javascript
+this.$messenger.showSuccessSnackbar("Some message");
+```
+
+### Error alert
+
+```javascript
+this.$messenger.showErrorSnackbar("Some message");
+```
