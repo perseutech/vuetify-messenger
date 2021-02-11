@@ -1,7 +1,10 @@
 {
-  "name": "vuetify-messenger",
+  "name": "@perseu-vue/vuetify-messenger",
   "version": "0.0.0",
-  "private": true,
+  "author": "Perseu Tech",
+  "license": "MIT",
+  "repository": "https://github.com/perseutech/vuetify-messenger",
+  "main": "index.js",
   "scripts": {
     "dev": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
