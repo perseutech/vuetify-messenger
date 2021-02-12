@@ -38,6 +38,9 @@ export default {
       },
       showErrorSnackbar: message => {
         store.dispatch("alert/showErrorSnackbar", message);
+      },
+      isShowing: () => {
+        return store.state.alert.alert || store.state.alert.snackbar;
       }
     };
   }
