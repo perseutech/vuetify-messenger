@@ -1,6 +1,6 @@
 {
   "name": "@perseu-vue/vuetify-messenger",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "Perseu Tech",
   "license": "MIT",
   "repository": "https://github.com/perseutech/vuetify-messenger",
@@ -11,7 +11,8 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "up": "npm publish --access public"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",

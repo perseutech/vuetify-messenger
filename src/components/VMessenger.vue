@@ -3,7 +3,7 @@
     <v-dialog v-model="alert" max-width="290" persistent>
       <v-card>
         <v-card-title class="headline">{{ title }}</v-card-title>
-        <v-card-text>{{ message }}</v-card-text>
+        <v-card-text v-html="message"></v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
