@@ -39,6 +39,15 @@ export default {
       showErrorSnackbar: message => {
         store.dispatch("alert/showErrorSnackbar", message);
       },
+      showLoadingDialog: message => {
+        store.dispatch("alert/showLoadingDialog", message);
+      },
+      changeLoadingMessage: message => {
+        store.dispatch("alert/changeLoadingMessage", message);
+      },
+      closeLoading: message => {
+        store.dispatch("alert/closeLoading", message);
+      },
       isShowing: () => {
         return store.state.alert.alert || store.state.alert.snackbar;
       }

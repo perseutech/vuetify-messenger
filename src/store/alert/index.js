@@ -6,6 +6,8 @@ export default {
     isShowing: false,
     alert: false,
     snackbar: false,
+    loading: false,
+    progressColor: "",
     snackbarColor: "",
     isConfirm: false,
     title: "",
@@ -46,6 +48,16 @@ export default {
       state.snackbarColor = payload.snackbarColor;
       state.isShowing = true;
     },
+    SHOW_LOADING(state, payload) {
+      state.loading = true;
+      state.title = payload.title;
+      state.message = payload.message;
+      state.progressColor = payload.progressColor;
+      state.isShowing = true;
+    },
+    CHANGE_LOADING_MESSAGE(state, payload) {
+      state.message = payload.message;
+    },
     HIDE_ALERT(state) {
       state.alert = false;
       state.isConfirm = false;
@@ -61,6 +73,12 @@ export default {
     },
     HIDE_SNACKBAR(state) {
       state.snackbar = false;
+      state.title = "";
+      state.message = "";
+      state.isShowing = false;
+    },
+    HIDE_LOADING(state) {
+      state.loading = false;
       state.title = "";
       state.message = "";
       state.isShowing = false;
@@ -122,6 +140,18 @@ export default {
         snackbarColor: "error"
       });
     },
+    showLoadingDialog({ commit }, message) {
+      commit("SHOW_LOADING", {
+        title: options.texts.loadingTitle,
+        message: message,
+        progressColor: "primary"
+      });
+    },
+    changeLoadingMessage({ commit }, message) {
+      commit("CHANGE_LOADING_MESSAGE", {
+        message: message
+      });
+    },
     startYesLoading({ commit }) {
       commit("START_YES_LOADING");
     },
@@ -133,6 +163,9 @@ export default {
     },
     closeSnackbar({ commit }) {
       commit("HIDE_SNACKBAR");
+    },
+    closeLoading({ commit }) {
+      commit("HIDE_LOADING");
     }
   }
 };

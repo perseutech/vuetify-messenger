@@ -41,6 +41,20 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-dialog v-model="loading" max-width="290" persistent>
+      <v-card>
+        <div class="text-center py-5" dense>
+          <v-progress-circular
+            indeterminate
+            :color="progressColor"
+            size="40"
+            width="3"
+          ></v-progress-circular>
+        </div>
+        <div class="headline text-center pb-2">{{ title }}</div>
+        <v-card-text class="text-center" v-html="message"></v-card-text>
+      </v-card>
+    </v-dialog>
     <v-snackbar v-model="snackbar" :color="snackbarColor" multi-line app>
       {{ message }}
       <template v-slot:action="{ attrs }">
@@ -73,6 +87,7 @@ export default {
   },
   computed: {
     alert: () => store.state.alert.alert,
+    loading: () => store.state.alert.loading,
     title: () => store.state.alert.title,
     message: () => store.state.alert.message,
     isConfirm: () => store.state.alert.isConfirm,
@@ -89,7 +104,8 @@ export default {
         !value ? this.closeSnackbar() : "";
       }
     },
-    snackbarColor: () => store.state.alert.snackbarColor
+    snackbarColor: () => store.state.alert.snackbarColor,
+    progressColor: () => store.state.alert.progressColor
   }
 };
 </script>
